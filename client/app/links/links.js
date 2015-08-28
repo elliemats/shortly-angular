@@ -1,16 +1,17 @@
 angular.module('shortly.links', [])
 
 .controller('LinksController', function ($scope, $window, $location, Links) {
-  $scope.link = {}; // data obj
+  $scope.data = {}; // data obj
 
   $scope.getLinks = function () {
     // add in function using Links from services.js
-    Links.getLinks($scope.link)
+    Links.getLinks($scope.data)
       .then(function(data) {
-         console.log(data); 
+         $scope.data.links = data;
       })
       .catch( function (error) {
         console.log( error );
-      }) 
+      })
   }
+  $scope.getLinks();
 });

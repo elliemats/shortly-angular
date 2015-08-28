@@ -1,5 +1,5 @@
-/* Intro notes: 
-  - controllers and directives are largely stateless, meaning that if the route changes to diplay a new page, or if the element a directive is within is removed, any internal variable or data are reset. If you have data that needs to persist across pages or throughout the life cycle of your app, a servive, or factory, is the best place to store it. 
+/* Intro notes:
+  - controllers and directives are largely stateless, meaning that if the route changes to diplay a new page, or if the element a directive is within is removed, any internal variable or data are reset. If you have data that needs to persist across pages or throughout the life cycle of your app, a servive, or factory, is the best place to store it.
   - advantage: ctrl and directives dont have to concern with internal logic
   - services can act like an internal api
   */
@@ -9,16 +9,28 @@ angular.module('shortly.services', [])
 .factory('Links', function ($http) { // (name, initialize function)
   // Your code here
 
-  var getLinks = function (link) {
+  var getLinks = function () {
     return $http({
       method: 'GET',
       url: '/api/links',
-      data: link
     })
     .then(function (resp) {
       return resp.data;
     })
   }
+
+  var addLink = function (link) {
+    return $http({
+      method: 'POST',
+      url: '/api/links',
+      data: link
+    })
+  }
+
+    return {
+      getLinks : getLinks,
+      addLink : addLink
+    }
 
 })
 .factory('Auth', function ($http, $location, $window) {
