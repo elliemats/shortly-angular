@@ -2,7 +2,7 @@
 // this Auth controller is responsible for our client side authentication
 // in our signup/signin forms using the injected Auth service
 angular.module('shortly.auth', [])
-
+// Auth is from the services.js file (a factory)
 .controller('AuthController', function ($scope, $window, $location, Auth) {
   $scope.user = {};
 
