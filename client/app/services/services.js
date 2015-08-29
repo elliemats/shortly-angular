@@ -25,7 +25,15 @@ angular.module('shortly.services', [])
       url: '/api/links',
       data: link
     })
+    .then(function (resp) {
+      console.log(resp, 'response from add link');
+      return resp;
+    })
   }
+
+  // var navToPage = function (link) {
+  //   $location.path(link);
+  // }
 
     return {
       getLinks : getLinks,

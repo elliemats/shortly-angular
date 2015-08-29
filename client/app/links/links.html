@@ -1,7 +1,14 @@
-<div id='container' pg-controller="LinksController" ng-init="getLinks()">
+<div id='container' pg-controller="LinksController" ng-model='links' ng-init="getLinks()">
   <!-- Your html here -->
 
   <h1>Links</h1>
-<!--     <p ng-repeat='link in links'></p> -->
+
+  <ul>
+    <h3>This is my Link List!</h3>
+    <li ng-click='navToPage(links.url)' ng-repeat='links in data.links'>
+      {{ links.url }}
+      <!-- figure out how to make this repeat work on all the links  -->
+    </li>
+  </ul>
 
 </div>
