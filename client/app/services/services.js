@@ -7,7 +7,6 @@
 angular.module('shortly.services', [])
 
 .factory('Links', function ($http) { // (name, initialize function)
-  // Your code here
 
   var getLinks = function () {
     return $http({
@@ -16,30 +15,26 @@ angular.module('shortly.services', [])
     })
     .then(function (resp) {
       return resp.data;
-    })
-  }
+    });
+  };
 
   var addLink = function (link) {
     return $http({
       method: 'POST',
       url: '/api/links',
-      data: link
+      data: link // obj looks like: {url: 'http://sjhash...'}
     })
-    .then(function (resp) {
-      return resp;
-    })
-  }
+  };
 
-  // var navToPage = function (link) {
-  //   $location.path(link);
-  // }
+return {
+  getLinks: getLinks,
+  addLink: addLink
+}
 
-    return {
-      getLinks : getLinks,
-      addLink : addLink
-    }
+
 
 })
+
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
   // it is responsible for authenticating our user

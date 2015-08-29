@@ -1,9 +1,33 @@
-<div id='container' ng-Controller="ShortenController as ShortenCtrl">
-<!-- Your code here -->
-  <form name="shortenForm" ng-submit='addLink()'>
-    <input type='link' type='url' ng-model='link.url'>
-    <button>Shorten Link</button>
+
+<div class='creator'>
+
+  <form name="shortlyForm" ng-submit='addLink()' novalidate> <!-- turns off html5 validation -->
+    <input name ='link'
+           type ='url'
+       ng-model ='link.url'
+    placeholder ='Enter your URL' required
+       ng-class ="{'error': shortlyForm.$invalid && shortlyForm.$dirty}"/>
+<!-- note: in ng-model, this implies that link is an obj, and that is has a url property. ng-model creates the obj and adds the url prop on it for us!
+note: we're validation on 'name' and 'type' (this is just looking for http)
+note: if shortlyForm is invalid and shortlyForm is dirty (has been modified), apply the css class of error to this input box (will be highlighted in red) -->
+
+    <button type ="submit"
+           value ="Shorten"
+     ng-disabled ='shortlyForm.$invalid'>Shorten
+     </button>
+<!-- note: ng-disabled means it won't be able to submit if shortlyForm is invalid  -->
+
   </form>
+
+  <div ng-if='shortlyForm.link.$error.required && shortlyForm.$dirty' class="message">
+  <!-- ng-if means show this element if there's an error and it's dirty -->
+    <h2>URL required</h2>
+  </div>
+
+  <div ng-show='shortlyForm.link.$error.url && shortlyForm.$dirty' class="message">
+    <h2>Not a valid URL</h2>
+  </div>
+
 </div>
 
 

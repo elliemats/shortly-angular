@@ -6,20 +6,22 @@
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
   </head>
   <body>
-    <h1>Shortly</h1>
-<script id='layout'>
-  <div class='navigation'>
-  <ul>
-    <li><a href='#' class='index'>All Links</a></li>
-    <li><a href='#' class='create'>Shorten</a></li>
-  </ul>
 
-    <a href='/logout' class='logout'>Logout</a>
-    </div>
-  <div id='container'></div>
-</script>
+  <nav class="navigation">
+    <ul>
+      <li>
+        <h1>Shortly</h1>
+      </li>
+      <li>
+        <a ui-sref-active="selected" href="#/links">Links</a>
+      </li>
+      <li>
+        <a ui-sref-active="selected" href="#/shorten">Shorten</a>
+      </li>
+    </ul>
+  </nav>
     <!-- the ng-view directive is where our templates will be loaded into when navigated to -->
-    <div ng-view></div>
+    <div ng-view></div> <!-- this is where every view will load -->
 
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>

@@ -5,16 +5,16 @@ angular.module('shortly.links', [])
 
   $scope.getLinks = function () {
     // add in function using Links from services.js
-    Links.getAll()
+    Links.getLinks()
       .then(function(links) {
-         $scope.data.links = links;
+         return $scope.data.links = links; //bind to scope data
       })
-      .catch( function (error) {
+      .catch(function (error) {
         console.log(error);
-      })
-  }
-  console.log($scope.data.links);
-  $scope.getLinks(); //invoke function when ctrl loads
-
+      });
+  };
+  $scope.getLinks(); //invoke function when ctrl loads (not preferred way)
   $scope.name = 'LinksController';
+
 });
+

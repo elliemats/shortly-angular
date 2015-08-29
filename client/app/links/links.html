@@ -1,17 +1,20 @@
-<div id='container' pg-controller="LinksController" ng-model='links' ng-init="getLinks()">
+
   <!-- Your html here -->
+  <input type="text" mg-model="search" placeholder="filter" />
+  <div class="links">
 
-  <h1>Links</h1>
 
-  <ul>
-    <h3>This is my Link List!</h3>
-    <li ng-click='navToPage(links.url)' ng-repeat='links in data.links'>
-      {{ links.url }}
-      <!-- figure out how to make this repeat work on all the links  -->
-    </li>
-<!--       things to add: <div>info, 
-        visits, count, title, original, anchor with the code attached a href='http://localhost:8000/api/links/{{links.code}}'{{links.base_url}}/{{links.code}}
-      </div> -->
-  </ul>
+  <div class="link" ng-repeat="link in data.links">
+  <!-- data.links is an array of links  -->
+  <div class="info">
+    <div class="visits">
+      <span class="count">{{ link.visits }}</span>
+    </div>
+    <div class="title">{{ link.title }}</div>
+    <div class="original">{{ link.url }}</div>
 
-</div>
+    <a href="http://localhost:3000/api/links/{{ link.code }}">{{ link.base_url }}/{{ link.code }}</a>
+  </div>
+  </div>
+
+  </div>
