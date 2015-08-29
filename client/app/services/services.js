@@ -26,7 +26,6 @@ angular.module('shortly.services', [])
       data: link
     })
     .then(function (resp) {
-      console.log(resp, 'response from add link');
       return resp;
     })
   }
